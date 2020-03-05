@@ -16,7 +16,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "css-loader": "^3.4.2",
     "fibers": "^3.1.0",
     "file-loader": "^5.1.0",
