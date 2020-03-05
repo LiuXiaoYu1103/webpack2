@@ -15,3 +15,21 @@ class Person {
 }
 
 console.log(Person.info)
+
+import Vue from 'vue'
+import loginCom from './loginCom.vue'
+
+var login = {
+  template: '<h1>登录</h1>'
+}
+
+var vm = new Vue({
+  el: '#app',
+  data: {
+    msg: '123'
+  },
+  components: {
+    login,
+    loginCom
+  }
+})

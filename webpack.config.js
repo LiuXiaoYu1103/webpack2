@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 // 在内存中生成html页面的插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// 渲染vue组件需要插件
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   // 入口文件
   entry : path.join(__dirname, './src/main.js'),
@@ -28,7 +30,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.join(__dirname, './src/index.html'),
       filename: 'index.html'
-    })
+    }),
+    new VueLoaderPlugin()
   ],
   module: {
     rules: [
@@ -52,7 +55,15 @@ module.exports = {
       { test: /\.js$/,
         use: 'babel-loader',
         exclude: /node_modules/
+      },
+      { test: /\.vue$/,
+        use: 'vue-loader'
       }
     ]
+  },
+  resolve: {
+    alias: {   // 修改vue导入是的路径   正常的import Vue 导入的不是Vue
+      "vue$": 'vue/dist/vue.js'
+    }
   }
 }
