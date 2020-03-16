@@ -16,7 +16,7 @@ module.exports = {
   devServer: {
     // contentBase: 'src',  //置顶托管的根目录
     open: true,  // 自动打开浏览器
-    port: 7788,  // 端口号
+    port: 7799,  // 端口号
     hot: true,  // 更新
     hotOnly: true
     // proxy: {
@@ -43,15 +43,14 @@ module.exports = {
             // placeholders占位符
             name: '[name].[hash:7].[ext]',
             outputPath: './dist/images/',
-            limit: 10
+            limit: 1024
           }
         }
       },
       { test: /\.css$/, use: ['style-loader', 'css-loader']},
       { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
       { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
-      { test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'},
-      { test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader'},
+      { test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'file-loader'},
       { test: /\.js$/,
         use: 'babel-loader',
         exclude: /node_modules/
