@@ -24,7 +24,7 @@ Person.prototype.sing = function () {
 var person2 = new Person('kakka', 12)
 person2.sing()
 
-//3 构造函数的继承
+//3 构造函数+原型实例实现继承
 function Father(name, age) {
   this.name = name;
   this.age = age;
@@ -37,7 +37,8 @@ function Son(name, age, sex) {
   this.sex = sex
 }
 // 没有这部 son不能继承Father原型链上的方法  不能直接等于否则修改Son的原型会修改Father的原型
-Son.prototype = Object.create(Father.prototype)
+// Son.prototype = Object.create(Father.prototype) 或者Father的实例
+Son.prototype = new Father()
 
 // 让son的构造器还是Son 否则无法使用Son上的方法
 Son.prototype.constructor = Son
@@ -54,7 +55,7 @@ console.log(son.name)
 
 
 // es6的继承
-// 每个类中都有个constructor 函数 实例new 是调用constructor用来传参数   继承中的 super函数 是自雷constructor中调用的父的constructor
+// 每个类中都有个constructor 函数 实例new 是调用constructor用来传参数   继承中的 super函数 是自类constructor中调用的父的constructor
 
 // super放在constructor 调用的是父类的constructor
 // 放在普通函数中可以调用父类的方法

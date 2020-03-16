@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="btn">点击后3s再可以点击</button>
+</body>
+<script>
+  // 1.foreach   对数组做些操作 不需要返回值不会改变原来数组
+  var arr = [1,2,3,4,6]
+  var sum = 0
+  arr.forEach(function(val, index) {
+    sum += val
+  })
+  console.log(sum)
+  // 2.filter 筛选数组  返回新数组不会改变原来数组
+  var newArr = arr.filter(function(val, index, arr2) {
+    // console.log(val, index, arr2)
+    return val % 2 === 0
+  })
+  console.log(newArr)
+  // some  查找是否有满足要求的元素
+  var test = arr.some(function(val) {
+    return val > 2
+  })
+  console.log(test)
+  // apply  call (1)调用函数 （2）改变内部this指向 
+  
+  function testT(arg) {
+    console.log(arg)
+  }
+  var newObject = {
+    name: 'jajja'
+  }
+  testT.apply(newObject, [9])  // 打印的是字符串会把数组去掉
+
+  var arr2 = [2,5,7,45]
+  // console.log(Math.max.apply(null, arr2))
+  Math.max(Math, arr2)
+
+  // Math.fn  都是数字中的最大值不是数组
+  // Math.min(1,2,3,5,5)
+
+
+  // bind 会改变this 但是不会调用函数   返回的是改变this之后的新函数
+  // 区别和call apply
+  function writeVal(val) { 
+    console.log(val)
+  }
+  var obj1 = {
+    name: 'hahha'
+  }
+  writeVal.call(obj1, 'ooo')  // 打印 ooo
+  var fn = writeVal.bind(obj1, '000')  // 不会打印 因为只改变this了 并没有调用
+  fn()
+
+  var btn = document.querySelector('.btn')
+  btn.onclick = function () { 
+    this.disabled = true
+    setTimeout(function(){
+      // bind 改变了this的指向  在定时器中this 指向了window  但是改变了指向又不立即执行 需要在3s后自己执行  所以用bind
+      this.disabled = false
+    }.bind(this), 3000)
+   }
+</script>
+</html>
