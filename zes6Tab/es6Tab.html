@@ -25,13 +25,19 @@
 </body>
 <script src="./index.js"></script>
 <script>
-  // class Person {
-  //   constructor (x, y) {
-  //     this.x = x,
-  //     this.y = y
-  //   }
-  // }
-  // var person = new Person(1, 2)
-  // console.log(person.x)
+  var that;
+  class Person {
+    constructor (x, y) {
+      this.x = x,
+      this.y = y
+      console.log(this)
+    }
+    run () {
+      console.log(this)
+    }
+  }
+  var person = new Person(1, 2)
+  person.run()
+  console.log(person.x)
 </script>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    /* 媒体查询的响应式 */
+    /* @media (min-width: 1200px) {
+      body {
+        background-color: red;
+      }
+    }
+    @media (min-width: 900px) and (max-width: 1200px) {
+      body {
+        background-color: green;
+      }
+    }
+    @media (max-width: 900px) {
+      body {
+        background-color: blue;
+      }
+    } */
+    /* 百分数布局的响应式 */
+    .side {
+      width: 20%;
+      height: 100%;
+      float: left;
+      background-color: blueviolet;
+    }
+    .main {
+      height: 100%;
+      overflow: hidden;
+      background-color: cadetblue;
+    }
+
+    /* 屏幕小于500px时  响应式布局   计算属性calc   vh vw */
+    @media (max-width: 500px) {
+      .side {
+        float: none;
+        width: 100%;
+        height: 10%;
+      }
+      .main {
+        width: 100%;
+        height: calc(100vh - 10%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="side"></div>
+  <div class="main"></div>
+</body>
+<script>
+
+</script>
+</html>
